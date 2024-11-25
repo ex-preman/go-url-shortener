@@ -6,7 +6,8 @@ import (
 	"runtime"
 
 	"github.com/ExPreman/url-shortener-go/handler"
-	storage "github.com/ExPreman/url-shortener-go/storage/mysql"
+	// storage "github.com/ExPreman/url-shortener-go/storage/mysql" // uncomment this if want to use sql
+	storage "github.com/ExPreman/url-shortener-go/storage/memory"
 
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -15,7 +16,8 @@ func main() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
 
 	// call storage
-	storage := &storage.MysqlDB{}
+	// storage := &storage.MysqlDB{} // sql
+	storage := &storage.MemoryStorage{} // memory
 	err := storage.Init()
 	if err != nil {
 		log.Fatal(err)
