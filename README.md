@@ -18,4 +18,4 @@ JSON Payload:
 curl -d '{"url":"https://go.dev/play"}' -H "Content-Type: application/json" -X POST http://localhost:8080/shorten
 
 - Redirect
-URL: http://localhost:8080/[code from response shorten]
+URL: http://localhost:8080/{shorten_code}
